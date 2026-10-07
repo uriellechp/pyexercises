@@ -24,34 +24,36 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In: An integer N typed by the user.
-# 2. Process: Ask for input, validate range (1 to 100 max), then loop from 1 to N and check modulo % 2 for each number.
-# 3. Out: For each number from 1 to N, print whether it is odd or even.
+# 1. In: A positive integer N typed by the user.
+# 2. Process: Convert input to int, validate edge cases, and loop from 1 to N using modulo (%) to check if each number is odd or even.
+# 3. Out: Messages indicating whether each number from 1 to N is odd or even, or an error message for invalid inputs.
 # 4. What happens on 0, on a negative number, on a very large number:
-#    - 0 or negative number: Display an error message asking for a positive number >= 1.
-#    - Very large number (> 100, e.g. 5000): Display a limit message capping execution to avoid spamming the terminal.
+#    - On 0: Displays an error message stating that N must be a positive integer >= 1.
+#    - On negative numbers: Displays an error message stating that N must be a positive integer >= 1.
+#    - On 5000 (or > 100): Displays a warning message refusing values over 100 to avoid flooding the terminal.
 
 # Check it yourself results:
-# - Tested with 6: Printed exactly 3 odd numbers (1, 3, 5) and 3 even numbers (2, 4, 6).
-# - Tested with 0 or negative (-4): Displayed "Please enter an integer greater than 0."
-# - Tested with 5000: Displayed "Number is too large! Please enter a number between 1 and 100."
+# - Tested with 6: Correctly outputs 3 odd (1, 3, 5) and 3 even (2, 4, 6) lines.
+# - Tested with 0: Displays "Error: Please enter a positive integer greater than 0."
+# - Tested with -4: Displays "Error: Please enter a positive integer greater than 0."
+# - Tested with 5000: Displays "Error: Number too large. Please enter a number <= 100."
 
 
 # Your code below
 
 # Asking user for an integer N
-n_str = input("Enter an integer N: ")
-n = int(n_str)
+user_input = input("Enter a positive number N: ")
+N = int(user_input)
 
-# Validating input decisions
-if n <= 0:
-    print("Please enter an integer greater than 0.")
-elif n > 100:
-    print("Number is too large! Please enter a number between 1 and 100.")
+# Edge case checks
+if N <= 0:
+    print("Error: Please enter a positive integer greater than 0.")
+elif N > 100:
+    print("Error: Number too large. Please enter a number <= 100.")
 else:
-# Loop from 1 to N to check odd/even
-    for i in range(1, n + 1):
+    # Loop from 1 to N
+    for i in range(1, N + 1):
         if i % 2 == 0:
-            print(f"{i} is Even")
+            print(f"{i} is even")
         else:
-            print(f"{i} is Odd")
+            print(f"{i} is odd")
